@@ -92,6 +92,10 @@ extension CKFSession.FlashMode {
         defer {
             self.cameraPosition = position
             
+            if self.session.canSetSessionPreset(.hd1920x1080) {
+                self.session.sessionPreset = .hd1920x1080
+            }
+            
             do {
                 let microphoneInput = try CKFSession.captureDeviceInput(type: .microphone)
                 self.session.addInput(microphoneInput)
@@ -99,8 +103,8 @@ extension CKFSession.FlashMode {
                 print(error.localizedDescription)
             }
         }
-        
-        self.session.sessionPreset = .hd1920x1080
+        // default to 720 incase of front facing camera and update the preset after if its supported.
+        self.session.sessionPreset = .hd1280x720
         self.session.addOutput(self.movieOutput)
     }
     
