@@ -19,7 +19,7 @@ extension CKFSession.FlashMode {
     }
 }
 
-@objc public class CKFVideoSession: CKFSession, AVCaptureFileOutputRecordingDelegate {
+@objc open class CKFVideoSession: CKFSession, AVCaptureFileOutputRecordingDelegate {
     
     @objc public private(set) var isRecording = false
     

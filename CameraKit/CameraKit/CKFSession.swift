@@ -71,7 +71,7 @@ extension CKFSession.CameraPosition {
     @objc func didChangeValue(session: CKFSession, value: Any, key: String)
 }
 
-@objc public class CKFSession: NSObject {
+@objc open class CKFSession: NSObject {
     
     @objc public enum DeviceType: UInt {
         case frontCamera, backCamera, microphone
