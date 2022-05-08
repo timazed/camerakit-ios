@@ -84,7 +84,7 @@ extension CKFSession.FlashMode {
         }
     }
     
-    let movieOutput = AVCaptureMovieFileOutput()
+    public var movieOutput = AVCaptureMovieFileOutput()
     
     @objc public init(position: CameraPosition = .back) {
         super.init()
