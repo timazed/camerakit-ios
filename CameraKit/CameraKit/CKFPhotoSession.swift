@@ -83,7 +83,15 @@ extension CKFSession.FlashMode {
     
     var faceDetectionBoxes: [UIView] = []
     
-    @objc public init(position: CameraPosition = .back, detection: CameraDetection = .none) {
+    private var faceDetectionBoxColor: UIColor
+    public var isFaceDetected: Bool {
+        return !faceDetectionBoxes.isEmpty
+    }
+    
+    @objc public init(position: CameraPosition = .back,
+                      detection: CameraDetection = .none,
+                      faceDetectionBoxColor: UIColor = .green) {
+        self.faceDetectionBoxColor = faceDetectionBoxColor
         super.init()
         
         defer {
@@ -247,8 +255,8 @@ extension CKFSession.FlashMode {
         if faceMetadataObjects.count > self.faceDetectionBoxes.count {
             for _ in 0..<faceMetadataObjects.count - self.faceDetectionBoxes.count {
                 let view = UIView()
-                view.layer.borderColor = UIColor.green.cgColor
-                view.layer.borderWidth = 1
+                view.layer.borderColor = faceDetectionBoxColor.cgColor
+                view.layer.borderWidth = 2
                 self.overlayView?.addSubview(view)
                 self.faceDetectionBoxes.append(view)
             }
