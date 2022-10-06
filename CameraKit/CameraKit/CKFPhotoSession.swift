@@ -79,7 +79,7 @@ extension CKFSession.FlashMode {
         }
     }
     
-    let photoOutput = AVCapturePhotoOutput()
+    public var photoOutput = AVCapturePhotoOutput()
     
     var faceDetectionBoxes: [UIView] = []
     
