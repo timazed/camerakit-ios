@@ -25,13 +25,10 @@ import AVFoundation
     
     @objc public var session: CKFSession? {
         didSet {
-            oldValue?.stop()
-            
             if let session = session {
                 self.previewLayer = AVCaptureVideoPreviewLayer(session: session.session)
                 session.previewLayer = self.previewLayer
                 session.overlayView = self
-                session.start()
             }
         }
     }
